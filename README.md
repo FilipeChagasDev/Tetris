@@ -3,7 +3,9 @@ This is a Tetris game developed with C ++ and OpenGL
 
 ## Author Notes:
 This project was developed using the Qt-creator IDE (although no Qt framework library was used). The code files, together with the qt-creator project file "Tetris-qtcreator.pro", are in the "src/Tetris-qtcreator-project" directory. The project is configured to be compiled in the "src/build-Tetris" directory. Both of these directories need to be located in the same parent directory, otherwise the qt-creator will not find the build-Tetris directory.
+
 Inside the "src/build-Tetris" directory, there is a file called "serif.ttf". This file contains the font used for rendering text in this program, and it must be in the same directory as the compiled executable. 
+
 This project was developed in Linux and has not been tested on other platforms.
 
 ## Dependencies
