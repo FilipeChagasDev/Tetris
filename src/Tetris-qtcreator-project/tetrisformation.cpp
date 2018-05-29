@@ -1,5 +1,12 @@
 #include "tetrisformation.hpp"
-#include <GL/gl.h>
+
+
+// Graphics Libs
+#ifdef __APPLE__
+    #include <OpenGL/gl.h>
+#else
+    #include <GL/gl.h>
+#endif
 
 void TetrisFormation::addPoint(int x, int y)
 {
@@ -11,6 +18,7 @@ void TetrisFormation::addPoint(int x, int y)
 
 TetrisFormation::TetrisFormation(TetrisMatrix *matrix, int x, int y)
 {
+    allow_everything = true;
     myMatrix = matrix;
     graph_x = x;
     graph_y = y;
@@ -35,6 +43,18 @@ void TetrisFormation::render()
     }
 }
 
+void TetrisFormation::renderSample(int x, int y)
+{
+    for(list<TetrisPoint>::iterator point = my_points.begin(); point != my_points.end(); point++ )
+    {
+        glPushMatrix();
+        glTranslatef(x + point->x * myMatrix->getBlockWidth(),
+                     y + point->y * myMatrix->getBlockHeight(), 0);
+        TetrisMatrix::renderSquare(myMatrix->getBlockWidth(), myMatrix->getBlockHeight(), my_red, my_green, my_blue);
+        glPopMatrix();
+    }
+}
+
 bool TetrisFormation::canMoveDown()
 {
     for(list<TetrisPoint>::iterator point = my_points.begin(); point != my_points.end(); point++ )
@@ -46,7 +66,7 @@ bool TetrisFormation::canMoveDown()
 
 bool TetrisFormation::moveDown()
 {
-    if(canMoveDown())
+    if(canMoveDown() || allow_everything)
     {
         graph_y += 1;
         return true; //moved
@@ -65,7 +85,7 @@ bool TetrisFormation::canMoveLeft()
 
 bool TetrisFormation::moveLeft()
 {
-    if(canMoveLeft())
+    if(canMoveLeft() || allow_everything)
     {
         graph_x -= 1;
         return true; //moved
@@ -84,7 +104,7 @@ bool TetrisFormation::canMoveRight()
 
 bool TetrisFormation::moveRight()
 {
-    if(canMoveRight())
+    if(canMoveRight() || allow_everything)
     {
         graph_x += 1;
         return true; //moved
@@ -94,7 +114,7 @@ bool TetrisFormation::moveRight()
 
 bool TetrisFormation::clockwiseRotate()
 {
-    for(list<TetrisPoint>::iterator point = my_points.begin(); point != my_points.end(); point++ )
+    if(!allow_everything) for(list<TetrisPoint>::iterator point = my_points.begin(); point != my_points.end(); point++ )
     {
         if (!myMatrix->canAddBlock(graph_x - point->y, graph_y + point->x)) return false; //cannot rotate
     }
@@ -112,7 +132,7 @@ bool TetrisFormation::clockwiseRotate()
 
 bool TetrisFormation::anticlockwiseRotate()
 {
-    for(list<TetrisPoint>::iterator point = my_points.begin(); point != my_points.end(); point++ )
+    if(!allow_everything) for(list<TetrisPoint>::iterator point = my_points.begin(); point != my_points.end(); point++ )
     {
         if (!myMatrix->canAddBlock(graph_x + -point->y, graph_y - point->x)) return false; //cannot rotate
     }
@@ -130,7 +150,7 @@ bool TetrisFormation::anticlockwiseRotate()
 
 bool TetrisFormation::invertX()
 {
-    for(list<TetrisPoint>::iterator point = my_points.begin(); point != my_points.end(); point++ )
+    if(!allow_everything) for(list<TetrisPoint>::iterator point = my_points.begin(); point != my_points.end(); point++ )
     {
         if (!myMatrix->canAddBlock(graph_x + point->y, graph_y - point->x)) return false; //cannot invert
     }
@@ -148,7 +168,7 @@ bool TetrisFormation::invertX()
 
 bool TetrisFormation::invertY()
 {
-    for(list<TetrisPoint>::iterator point = my_points.begin(); point != my_points.end(); point++ )
+    if(!allow_everything) for(list<TetrisPoint>::iterator point = my_points.begin(); point != my_points.end(); point++ )
     {
         if (!myMatrix->canAddBlock(graph_x - point->y, graph_y + point->x)) return false; //cannot invert
     }

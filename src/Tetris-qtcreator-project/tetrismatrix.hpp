@@ -31,6 +31,17 @@ public:
     float getGraphHeight();
     float getBlockWidth();
     float getBlockHeight();
+
+    //line management by Gustavo Ale
+    bool isrowEmpty(int nrow);
+    bool isrowFull(int nrow);
+
+    void promptfullRows();
+
+    void removeRow(int nrow);
+    void dropRow(int nrow);
+
+
 };
 
 #endif // TETRISMATRIX_HPP

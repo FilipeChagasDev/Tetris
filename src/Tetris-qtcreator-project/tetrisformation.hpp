@@ -20,9 +20,12 @@ protected:
     list<TetrisPoint> my_points; //my pointers
     void addPoint(int x, int y);
 public:
+    bool allow_everything;
+
     TetrisFormation(TetrisMatrix *matrix, int x, int y);
     void setColor(float red, float green, float blue);
     void render();
+    void renderSample(int x, int y);
 
     bool canMoveDown();
     bool moveDown();

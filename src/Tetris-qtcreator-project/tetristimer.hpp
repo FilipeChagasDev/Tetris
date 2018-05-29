@@ -17,6 +17,8 @@ public:
     uintmax_t update();
     uintmax_t getInitUseconds();
     uintmax_t getElapsedUseconds();
+    void setEveryInterval(uintmax_t interval);
+    uintmax_t getEveryInterval();
     bool every();
 };
 

@@ -37,6 +37,18 @@ uintmax_t TetrisTimer::getElapsedUseconds()
     return elapsed_time;
 }
 
+void TetrisTimer::setEveryInterval(uintmax_t interval)
+{
+    update();
+    my_every_interval = interval;
+    next_every_activation = elapsed_time + my_every_interval;
+}
+
+uintmax_t TetrisTimer::getEveryInterval()
+{
+    return my_every_interval;
+}
+
 
 bool TetrisTimer::every()
 {

@@ -1,5 +1,12 @@
 #include "tetrismatrix.hpp"
-#include <GL/gl.h>
+
+// Graphics Libs
+#ifdef __APPLE__
+    #include <OpenGL/gl.h>
+#else
+    #include <GL/gl.h>
+#endif
+
 #include <iostream>
 
 float TetrisMatrix::getGraphX()
@@ -110,7 +117,7 @@ void TetrisMatrix::renderSquare(float width, float height, float red, float gree
     glBegin(GL_POLYGON); //square
         glColor3f(red, green, blue); //top color
             glVertex2f(1,1); //top left vertex
-        glColor3f(red - 0.1f, green - 0.1f, blue - 0.1f); //bottom color
+        glColor3f(red - 0.3f, green - 0.3f, blue - 0.3f); //bottom color
             glVertex2f(1, height -1); //bottom left vertex
             glVertex2f(width - 1, height - 1); //bottom right vertex
         glColor3f(red, green, blue); //top color
@@ -140,3 +147,80 @@ void TetrisMatrix::render()
             }
         }
 }
+
+//alterations by Gustavo Ale
+bool TetrisMatrix::isrowFull(int nrow)
+{
+
+    for(int x = 0; x < TetrisMatrix::width; x++)
+    {
+        if(blocks[x][nrow].empty)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool TetrisMatrix::isrowEmpty(int nrow)
+{
+
+    for(int x = 0; x < TetrisMatrix::width; x++)
+    {
+        if(!blocks[x][nrow].empty)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+void TetrisMatrix::promptfullRows(void)
+{
+    int fullrows = 0;
+    for(int y = 0 ; y < TetrisMatrix::height; y++ )
+    {
+        if(isrowFull(y))
+        {
+               std::cout << "Row: " << y << "is full" << std::endl;
+               removeRow(y);
+               fullrows++;
+        }
+    }
+    if(fullrows >= 4)
+    {
+        std::cout << "Tetris!!!" << std::endl;
+        //score
+    }
+}
+
+void TetrisMatrix::dropRow(int nrow)
+{
+    if(isrowEmpty(nrow+1))
+    {
+        for(int x = 0; x < TetrisMatrix::width; x++)
+        {
+            blocks[x][nrow+1].red   =   blocks[x][nrow].red;
+            blocks[x][nrow+1].green =   blocks[x][nrow].green;
+            blocks[x][nrow+1].blue  =   blocks[x][nrow].blue;
+            blocks[x][nrow+1].empty =   blocks[x][nrow].empty;
+
+            blocks[x][nrow].empty = true;
+        }
+    }
+
+}
+void TetrisMatrix::removeRow(int nrow)
+{
+    for(int x = 0; x < TetrisMatrix::width; x++)
+    {
+        removeBlock(x,nrow);
+    }
+    for(int y = nrow - 1; y >= 0; y --)
+    {
+        dropRow(y);
+    }
+}
+
+
+//end of Gustavo Ale alterations
