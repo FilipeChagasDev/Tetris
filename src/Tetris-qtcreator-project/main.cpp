@@ -129,7 +129,7 @@ void initWindow()
     glViewport(0,0,window_width,window_height);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    cout << fontlocation << endl;
+    //cout << fontlocation << endl;
 
     if(!(font = dtx_open_font(fontlocation, 24)))
     {
@@ -162,6 +162,15 @@ void renderInfo()
         dtx_string("next:");
     glPopMatrix();
     getNextFormation()->renderSample(390,120);
+
+    glPushMatrix();
+        glColor3f(1,1,1);
+        glTranslatef(360,300,0);
+        glRotatef(180,1,0,0);
+        char str_score[50];
+        sprintf(str_score, "Score: %d", matrix.getTetrisScore());
+        dtx_string(str_score);
+    glPopMatrix();
 }
 
 void renderAll()
@@ -196,6 +205,7 @@ void playGame()
 {
     AutoMoveTimer.reset();
     AutoMoveTimer.setEveryInterval(USEC_UNITY/2);
+
     glClear(GL_COLOR_BUFFER_BIT);
 
     renderBackground(0,0,0);

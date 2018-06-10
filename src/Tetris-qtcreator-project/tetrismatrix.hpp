@@ -7,9 +7,11 @@ class TetrisMatrix
 private:
     float graph_x, graph_y, graph_width, graph_height;
     float block_width, block_height;
+    int tetris_score;
 public:
-    static const int width = 10;
-    static const int height = 20;
+    static const int width = 13;
+    static const int height = 26;
+
     TetrisBlock blocks[width][height];
 
     TetrisMatrix();
@@ -42,6 +44,7 @@ public:
     void dropRow(int nrow);
 
 
+    int getTetrisScore() const;
 };
 
 #endif // TETRISMATRIX_HPP

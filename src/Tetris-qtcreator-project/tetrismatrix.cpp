@@ -39,6 +39,11 @@ float TetrisMatrix::getBlockHeight()
     return block_height;
 }
 
+int TetrisMatrix::getTetrisScore() const
+{
+    return tetris_score;
+}
+
 TetrisMatrix::TetrisMatrix()
 {
     for(int x = 0; x < TetrisMatrix::width; x++ )
@@ -191,6 +196,11 @@ void TetrisMatrix::promptfullRows(void)
     {
         std::cout << "Tetris!!!" << std::endl;
         //score
+        tetris_score += 100;
+    }
+    else
+    {
+        tetris_score += fullrows;
     }
 }
 

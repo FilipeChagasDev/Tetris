@@ -45,12 +45,13 @@ void TetrisFormation::render()
 
 void TetrisFormation::renderSample(int x, int y)
 {
+    int width = 35, height = 35;
     for(list<TetrisPoint>::iterator point = my_points.begin(); point != my_points.end(); point++ )
     {
         glPushMatrix();
-        glTranslatef(x + point->x * myMatrix->getBlockWidth(),
-                     y + point->y * myMatrix->getBlockHeight(), 0);
-        TetrisMatrix::renderSquare(myMatrix->getBlockWidth(), myMatrix->getBlockHeight(), my_red, my_green, my_blue);
+        glTranslatef(x + point->x * width,
+                     y + point->y * height, 0);
+        TetrisMatrix::renderSquare(width, height, my_red, my_green, my_blue);
         glPopMatrix();
     }
 }
