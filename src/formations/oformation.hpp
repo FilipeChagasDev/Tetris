@@ -1,7 +1,7 @@
 #ifndef OFORMATION_HPP
 #define OFORMATION_HPP
-#include "tetrisformation.hpp"
-#include "tetrismatrix.hpp"
+#include "../tetrisformation.hpp"
+#include "../tetrismatrix.hpp"
 
 class OFormation : public TetrisFormation
 {

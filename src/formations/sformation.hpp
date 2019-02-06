@@ -1,7 +1,7 @@
 #ifndef SFORMATION_HPP
 #define SFORMATION_HPP
-#include "tetrisformation.hpp"
-#include "tetrismatrix.hpp"
+#include "../tetrisformation.hpp"
+#include "../tetrismatrix.hpp"
 
 class SFormation : public TetrisFormation
 {

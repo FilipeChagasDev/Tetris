@@ -1,12 +1,35 @@
 # Tetris
-This is a Tetris game developed with C ++ and OpenGL
+This is a Tetris game developed with C++ and classic OpenGL
+
+<img src="https://github.com/FilipeChagasDev/Tetris/tree/master/screenshots/1.gif" alt="Playing">
 
 ## Author Notes:
-This project was developed using the Qt-creator IDE (although no Qt framework library was used). The code files, together with the qt-creator project file "Tetris-qtcreator.pro", are in the "src/Tetris-qtcreator-project" directory. The project is configured to be compiled in the "src/build-Tetris" directory. Both of these directories need to be located in the same parent directory, otherwise the qt-creator will not find the build-Tetris directory.
+The code files are in the "src" directory.
 
-Inside the "src/build-Tetris" directory, there is a file called "serif.ttf". This file contains the font used for rendering text in this program, and it must be in the same directory as the compiled executable. 
+The "serif.ttf" file contains the font used for rendering text in this program, and it must be in the same directory as the compiled executable. 
 
 This project was developed in Linux and has not been tested on other platforms.
+
+## Compile and Run
+
+The compiler used here is the g++. Install it before try to compile this project.
+
+To compile this project, you must first install all dependencies. After do it, you must open this directory in the terminal and put the following commands:
+
+``` sh
+make
+```
+After do it, the compiler will generate a "tetris.elf" linux executable file. To run it, you need to put the following command in the terminal:
+
+``` sh
+./tetris.elf
+```
+
+To compile and run this project at once, you need to put the following command in the terminal:
+
+```
+make run
+```
 
 ## Dependencies
 this project depends on the following libraries and APIS: OpenGL, GLFW 3 and libDrawText 0.3.
