@@ -1,7 +1,7 @@
 # Tetris
 This is a Tetris game developed with C++ and classic OpenGL
 
-<img src="https://github.com/FilipeChagasDev/Tetris/tree/master/screenshots/1.gif" alt="Playing">
+![playing](https://github.com/FilipeChagasDev/Tetris/blob/master/screenshots/1.gif)
 
 ## Author Notes:
 The code files are in the "src" directory.
