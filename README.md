@@ -13,8 +13,20 @@ This project was developed in Linux and has not been tested on other platforms.
 
 ## Compile and Run
 
-The compiler used here is the g++. Install it before try to compile this project.
+### video
+https://youtu.be/Nf-Kg-4m-60
 
+### all commands
+``` sh
+git clone https://github.com/FilipeChagasDev/Tetris
+cd Tetris
+sudo sh installdependences.sh
+sudo sh fix.sh
+make
+./tetris.elf
+```
+
+### step by step
 
 You must open this directory in the terminal and put the following commands:
 
@@ -24,7 +36,10 @@ To install all dependencies:
 sudo sh installdependences.sh
 sudo sh fix.sh
 ```
+
+
 To compile the tetris game:
+(The compiler used here is the g++)
 
 ``` sh
 make
@@ -42,7 +57,7 @@ To compile and run this project at once, you need to put the following command i
 make run
 ```
 
-## Dependencies
+## Details
 this project depends on the following libraries and APIS: OpenGL, GLFW 3 and libDrawText 0.3.
 
 OpenGL is used as a rendering engine. The tests were done with version 4.6 of OpenGL, but probably works with older versions.
