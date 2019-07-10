@@ -1,0 +1,1 @@
+cp libdrawtext/libdrawtext.so.0 /usr/lib

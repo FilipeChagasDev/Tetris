@@ -15,11 +15,21 @@ This project was developed in Linux and has not been tested on other platforms.
 
 The compiler used here is the g++. Install it before try to compile this project.
 
-To compile this project, you must first install all dependencies. After do it, you must open this directory in the terminal and put the following commands:
+
+You must open this directory in the terminal and put the following commands:
+
+To install all dependencies:
+
+``` sh
+sudo sh installdependences.sh
+sudo sh fix.sh
+```
+To compile the tetris game:
 
 ``` sh
 make
 ```
+
 After do it, the compiler will generate a "tetris.elf" linux executable file. To run it, you need to put the following command in the terminal:
 
 ``` sh
