@@ -9,7 +9,7 @@ The code files are in the "src" directory.
 
 The "serif.ttf" file contains the font used for rendering text in this program, and it must be in the same directory as the compiled executable. 
 
-This project was developed in Linux and has not been tested on other platforms.
+This project was developed in Debian and Ubuntu, and has not been tested on other platforms.
 
 ## Compile and Run
 
